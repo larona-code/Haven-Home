@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Haven & Home | Feedback</title>
+    <meta
+      name="description"
+      content="Share feedback with Haven & Home. Tell us what you loved and how we can improve, plus our service area route."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="shell nav">
+        <a class="brand" href="./home.html">
+          <span class="brand-mark">H</span>
+          <span class="brand-text">
+            Haven &amp; Home
+            <small>Interior Design Studio</small>
+          </span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a class="nav-link" href="./about.html" data-nav="about">About</a>
+          <a class="nav-link" href="./design.html" data-nav="design">Project</a>
+          <a class="nav-link" href="./shop.html" data-nav="shop">Shop</a>
+          <a class="nav-link" href="./contact.html" data-nav="contact">Contact</a>
+          <a class="nav-link" href="./feedback.html" data-nav="feedback">Feedback</a>
+        </nav>
+
+        <a class="cta" href="./contact.html">Book a consult</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section shell" id="feedback">
+        <div class="people-strip reveal">
+          <div class="avatar-group" aria-label="Happy clients and designers">
+            <img
+              class="avatar"
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=220&q=80"
+              alt="Smiling client portrait"
+              loading="lazy"
+            />
+            <img
+              class="avatar"
+              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=220&q=80"
+              alt="Interior designer portrait"
+              loading="lazy"
+            />
+            <img
+              class="avatar"
+              src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=220&q=80"
+              alt="Happy homeowner portrait"
+              loading="lazy"
+            />
+          </div>
+          <p class="feedback-note">
+            Loved by homeowners who wanted a smoother, more beautiful path from idea to finished room.
+          </p>
+        </div>
+
+        <div class="section-header reveal">
+          <div>
+            <span class="eyebrow">Feedback</span>
+            <h2>Share how your Haven &amp; Home experience felt.</h2>
+          </div>
+          <p>
+            We use client feedback to refine our process, improve communication, and keep every project
+            warm, thoughtful, and beautifully organized.
+          </p>
+        </div>
+
+        <div class="feedback-grid">
+          <form
+            id="feedback-form"
+            class="feedback-card reveal feedback-prototype"
+            action="#"
+            method="post"
+          >
+            <div class="form-stack">
+              <div class="field">
+                <label for="feedback-name">Name</label>
+                <input
+                  id="feedback-name"
+                  type="text"
+                  placeholder="Your name"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+
+              <div class="field">
+                <label for="feedback-message">Message</label>
+                <textarea
+                  id="feedback-message"
+                  placeholder="Tell us what you loved and what we can improve."
+                  required
+                ></textarea>
+              </div>
+
+              <button class="cta" type="submit">Submit feedback</button>
+
+              <div id="feedback-thanks" class="thankyou" hidden>
+                Thank you! Your feedback helps us improve and keep the experience warm and clear.
+              </div>
+            </div>
+          </form>
+
+          <div class="route-card reveal">
+            <span class="eyebrow">Route &amp; Service Area</span>
+            <h3>Studio consults, virtual guidance, and in-home styling.</h3>
+            <p class="muted">
+              Based in your city and available across nearby neighborhoods, we offer a flexible mix
+              of onsite styling and remote planning support for modern home makeovers.
+            </p>
+
+            <div class="map-wrap" aria-label="Map and address">
+              <div class="micro">Address: Botswana Accountancy College Fairgrounds, Botswana</div>
+              <iframe
+                class="map-iframe"
+                title="Map - Botswana Accountancy College Fairgrounds"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=Botswana%20Accountancy%20College%20Fairgrounds&output=embed"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="shell">
+      <div class="footer-card reveal">
+        <h3>Haven &amp; Home</h3>
+        <p>
+          Modern interior design for calm, expressive homes. Thoughtful layouts, curated pieces,
+          and styling that makes everyday spaces feel elevated.
+        </p>
+        <div class="footer-meta">
+          <span>hello@havenandhome.com</span>
+          <span>Mon - Sat | 9:00 - 18:00</span>
+          <span>Designing homes with warmth and intention</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
+

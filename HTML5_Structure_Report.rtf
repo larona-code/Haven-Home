@@ -1,0 +1,85 @@
+{\rtf1\ansi\deff0
+{\fonttbl{\f0 Calibri;}{\f1 Consolas;}}
+\viewkind4\uc1\pard\sa160\sl276\slmult1\b\f0\fs32 Haven \u38? Home Website: HTML5 Structure Report\b0\fs22\par
+\pard\sa120\sl240\slmult1\fs22 Prepared for lecturer review\par
+\par
+\b 1) Purpose of this document\b0\par
+This report explains the HTML5 structure used in the Haven \u38? Home website and describes how semantic elements are applied across the pages.\par
+\par
+\b 2) Core HTML5 structure used on the website\b0\par
+Each page follows the same semantic HTML5 layout pattern:\par
+\par
+\f1\fs20 <!DOCTYPE html>\par
+<html lang="en">\par
+  <head>\par
+    <meta charset="utf-8" />\par
+    <meta name="viewport" content="width=device-width, initial-scale=1" />\par
+    <title>Page Title</title>\par
+    <meta name="description" content="Page-specific description" />\par
+    <link rel="stylesheet" href="./styles.css" />\par
+  </head>\par
+  <body>\par
+    <header> ... brand + primary navigation ... </header>\par
+    <main>\par
+      <section> ... page-specific content ... </section>\par
+    </main>\par
+    <footer> ... contact + studio information ... </footer>\par
+    <script src="./app.js" defer></script>\par
+  </body>\par
+</html>\par
+\f0\fs22\par
+\b 3) Description of the HTML5 semantic elements\b0\par
+\b <!DOCTYPE html>\b0  Declares HTML5 and ensures modern browser rendering.\par
+\b <html lang="en">\b0  Root element; language attribute improves accessibility and SEO.\par
+\b <head>\b0  Contains metadata: charset, responsive viewport, title, description, and linked CSS.\par
+\b <body>\b0  Contains all visible user interface content.\par
+\b <header>\b0  Top navigation area with brand identity and links to main pages.\par
+\b <nav>\b0  Primary navigation block with links to About, Project, Shop, Contact, and Feedback.\par
+\b <main>\b0  Main content container for the unique content of each page.\par
+\b <section>\b0  Semantic grouping of related page content (hero, projects, forms, etc.).\par
+\b <article>\b0  Used for repeatable standalone items (project cards and product cards).\par
+\b <form>\b0  Used for structured user input on Contact and Feedback pages.\par
+\b <footer>\b0  Bottom information area (email, opening hours, brand statement).\par
+\b <script defer>\b0  Loads JavaScript without blocking page rendering.\par
+\par
+\b 4) Shared site structure across all pages\b0\par
+The following design pattern is reused across the multi-page website:\par
+\pard\li360\sa80\tx360\fs22
+\bullet\tab Consistent header and navigation for usability and orientation.\par
+\bullet\tab Shared stylesheet (\f1 styles.css\f0) for visual consistency.\par
+\bullet\tab Shared JavaScript file (\f1 app.js\f0) for behavior and interactions.\par
+\bullet\tab Repeated footer content for brand consistency and quick contact reference.\par
+\pard\li0\sa120\tx0\fs22
+\par
+\b 5) Page-by-page structural description\b0\par
+\b Home page (\f1 home.html\f0)\b0\par
+Uses a hero-focused \f1 <section>\f0  inside \f1 <main>\f0 , with a slideshow image area, introductory text, and call-to-action buttons that route users to Projects and Shop.\par
+\par
+\b About page (\f1 about.html\f0)\b0\par
+Uses a single semantic \f1 <section>\f0  containing a heading block, process cards (Discover, Design, Source, Install), and a supporting image to present studio identity and workflow.\par
+\par
+\b Project page (\f1 design.html\f0)\b0\par
+Uses \f1 <section>\f0  with multiple \f1 <article>\f0  cards to showcase portfolio items. Each card includes image, title, and descriptive text.\par
+\par
+\b Shop page (\f1 shop.html\f0)\b0\par
+Uses \f1 <section>\f0  with product \f1 <article>\f0  cards. Each article contains media, product name, short description, and price grouping.\par
+\par
+\b Contact page (\f1 contact.html\f0)\b0\par
+Contains a semantic \f1 <form>\f0  split into two layout columns. Inputs include name, email, project type, and message. Includes an embedded map iframe and a hidden confirmation message region.\par
+\par
+\b Feedback page (\f1 feedback.html\f0)\b0\par
+Contains a feedback \f1 <form>\f0  with name and message fields, a submit button, hidden thank-you message, and a route/service information panel with map embed.\par
+\par
+\b 6) Note on index page (\f1 index.html\f0)\b0\par
+The \f1 index.html\f0  file includes a JavaScript redirect to \f1 home.html\f0 . This preserves compatibility for visitors entering through the root page while keeping \f1 home.html\f0  as the dedicated landing page.\par
+\par
+\b 7) HTML5 quality observations\b0\par
+\pard\li360\sa80\tx360\fs22
+\bullet\tab Correct HTML5 declaration and language tagging are present.\par
+\bullet\tab Semantic containers (\f1 header/main/section/article/footer\f0) are used appropriately.\par
+\bullet\tab Accessibility support is present in several areas (e.g., \f1 aria-label\f0  on navigation and media groups).\par
+\bullet\tab Forms include clear labels and required attributes on key fields.\par
+\pard\li0\sa120\tx0\fs22
+\par
+\b End of report\b0\par
+}

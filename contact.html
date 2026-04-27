@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Haven & Home | Contact</title>
+    <meta
+      name="description"
+      content="Contact Haven & Home for interior design consultations. Share your goals, room type, and budget range."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="shell nav">
+        <a class="brand" href="./home.html">
+          <span class="brand-mark">H</span>
+          <span class="brand-text">
+            Haven &amp; Home
+            <small>Interior Design Studio</small>
+          </span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a class="nav-link" href="./about.html" data-nav="about">About</a>
+          <a class="nav-link" href="./design.html" data-nav="design">Project</a>
+          <a class="nav-link" href="./shop.html" data-nav="shop">Shop</a>
+          <a class="nav-link" href="./contact.html" data-nav="contact">Contact</a>
+          <a class="nav-link" href="./feedback.html" data-nav="feedback">Feedback</a>
+        </nav>
+
+        <a class="cta" href="./contact.html">Book a consult</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section shell" id="contact">
+        <div class="section-header reveal">
+          <div>
+            <span class="eyebrow">Contact</span>
+            <h2>Tell us about your space and where you want it to go.</h2>
+          </div>
+          <p>
+            Share your goals, room type, and budget range. We will help you turn ideas and
+            inspiration into a clear next step.
+          </p>
+        </div>
+
+        <form id="contact-form" class="contact-prototype" action="#" method="post">
+          <div class="contact-grid">
+            <div class="contact-card reveal">
+              <div class="form-stack">
+                <div class="field">
+                  <label for="name">Name</label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    placeholder="Your full name"
+                    autocomplete="name"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="subject">Project type</label>
+                  <input
+                    id="subject"
+                    name="subject"
+                    type="text"
+                    placeholder="Living room, bedroom, full home..."
+                    required
+                  />
+                </div>
+
+                <button class="cta" type="submit" style="justify-self: start;">
+                  Submit inquiry
+                </button>
+              </div>
+            </div>
+
+            <div class="contact-card reveal">
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Tell us about your goals, style, rooms involved, and budget range."
+                  required
+                ></textarea>
+              </div>
+
+              <div class="map-wrap" aria-label="Map and address">
+                <div class="micro">
+                  Address: Botswana Accountancy College Fairgrounds, Botswana
+                </div>
+                <iframe
+                  class="map-iframe"
+                  title="Map - Botswana Accountancy College Fairgrounds"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  src="https://www.google.com/maps?q=Botswana%20Accountancy%20College%20Fairgrounds&output=embed"
+                ></iframe>
+              </div>
+
+              <div id="contact-thanks" class="thankyou" hidden>
+                Thank you! We received your inquiry and will get back to you soon.
+              </div>
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="shell">
+      <div class="footer-card reveal">
+        <h3>Haven &amp; Home</h3>
+        <p>
+          Modern interior design for calm, expressive homes. Thoughtful layouts, curated pieces,
+          and styling that makes everyday spaces feel elevated.
+        </p>
+        <div class="footer-meta">
+          <span>hello@havenandhome.com</span>
+          <span>Mon - Sat | 9:00 - 18:00</span>
+          <span>Designing homes with warmth and intention</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
+
