@@ -1,1 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Share your Haven & Home experience. We value every client's feedback to keep our process warm, thoughtful, and beautifully organised." />
+  <title>Feedback | Haven &amp; Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Feedback-page extras ── */
+    .fb-hero {
+      background: var(--cream);
+      padding: 7.5rem 0 5rem;
+      text-align: center;
+    }
 
+    .fb-hero .hero-tag { display: block; margin-bottom: 0.8rem; }
+    .fb-hero h1 { margin-bottom: 1rem; }
+    .fb-hero .lead {
+      max-width: 520px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--taupe);
+      margin-bottom: 1.6rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .breadcrumb a { color: var(--mocha); transition: color var(--transition); }
+    .breadcrumb a:hover { color: var(--espresso); }
+    .breadcrumb span { color: var(--taupe); }
+
+    /* Form card */
+    .fb-section {
+      background: var(--warm-white);
+      padding: 5rem 0 7rem;
+    }
+
+    .fb-card {
+      max-width: 660px;
+      margin: 0 auto;
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 3rem 3.5rem;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--sand);
+    }
+
+    .fb-card-head {
+      margin-bottom: 2.2rem;
+    }
+    .fb-card-head h2 { margin-bottom: 0.35rem; }
+    .fb-card-head p  { font-size: 0.88rem; }
+
+    /* Rating stars */
+    .rating-label {
+      display: block;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mocha);
+      margin-bottom: 0.6rem;
+      font-weight: 500;
+    }
+
+    .star-row {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .star-btn {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--sand);
+      transition: color 0.15s, transform 0.15s;
+      line-height: 1;
+      padding: 0;
+    }
+    .star-btn:hover,
+    .star-btn.lit { color: #d4a04a; }
+    .star-btn:hover { transform: scale(1.15); }
+
+    /* Category chips */
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .chip {
+      background: var(--warm-white);
+      border: 1.5px solid var(--sand);
+      border-radius: 50px;
+      padding: 0.38rem 0.9rem;
+      font-size: 0.8rem;
+      font-family: var(--font-sans);
+      color: var(--mocha);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .chip:hover,
+    .chip.active {
+      background: var(--espresso);
+      border-color: var(--espresso);
+      color: var(--cream);
+    }
+
+    /* Divider */
+    .fb-divider {
+      border: none;
+      border-top: 1px solid var(--sand);
+      margin: 1.8rem 0;
+    }
+
+    /* Submit row */
+    .fb-submit-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .privacy-note {
+      font-size: 0.75rem;
+      color: var(--taupe);
+      font-style: italic;
+    }
+
+    /* Success state */
+    .fb-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 3rem 2rem;
+      gap: 1rem;
+    }
+    .fb-success.show { display: flex; }
+    .fb-success .check-icon {
+      width: 64px; height: 64px;
+      background: var(--espresso);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cream);
+      font-size: 1.8rem;
+    }
+    .fb-success h3 { font-size: 1.4rem; }
+    .fb-success p  { color: var(--mocha); font-size: 0.95rem; max-width: 340px; }
+
+    /* Testimonials strip */
+    .fb-testimonials {
+      background: var(--espresso);
+      padding: 4rem 0;
+    }
+    .fb-testimonials .section-tag { color: var(--accent-lt); display: block; text-align: center; margin-bottom: 1rem; }
+    .fb-testimonials h2 { color: var(--cream); text-align: center; margin-bottom: 2.5rem; }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .testimonial-card {
+      background: rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 1.6rem;
+      border-top: 3px solid var(--accent);
+    }
+    .testimonial-card p {
+      color: var(--taupe);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .testimonial-author img {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .author-name { font-size: 0.82rem; color: var(--cream); }
+    .author-type { font-size: 0.72rem; color: var(--taupe); }
+
+    @media (max-width: 700px) {
+      .fb-card { padding: 2rem 1.4rem; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-mark">H</span>
+        Haven &amp; Home Interior Design Studio
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#design">Project</a></li>
+        <li><a href="index.html#shop">Shop</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="feedback.html" style="color:var(--espresso);font-weight:500;">Feedback</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Book a consult</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="fb-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <span>Feedback</span>
+      </nav>
+      <span class="hero-tag">Feedback</span>
+      <h1>Share how your Haven &amp; Home<br>experience felt.</h1>
+      <p class="lead">We use client feedback to refine our process, improve communication,
+         and keep every project warm, thoughtful, and beautifully organised. Your message
+         goes directly to our studio team.</p>
+    </div>
+  </div>
+
+  <!-- FORM SECTION -->
+  <section class="fb-section">
+    <div class="container">
+      <div class="fb-card">
+
+        <!-- Success message (shown after send) -->
+        <div class="fb-success" id="successMsg">
+          <div class="check-icon">✓</div>
+          <h3>Thank you for your feedback!</h3>
+          <p>Your message has been sent to our studio. We read every note and truly appreciate
+             you taking the time to share your experience.</p>
+          <a href="index.html" class="btn btn-dark" style="margin-top:0.5rem;">Back to home →</a>
+        </div>
+
+        <!-- The form -->
+        <div id="fbForm">
+          <div class="fb-card-head">
+            <h2>Your experience matters to us.</h2>
+            <p>Fill in the form below — your message is sent directly to our studio inbox.</p>
+          </div>
+
+          <!-- Overall rating -->
+          <label class="rating-label">Overall experience</label>
+          <div class="star-row" id="starRow" role="group" aria-label="Rate your experience">
+            <button class="star-btn" type="button" data-val="1" aria-label="1 star">★</button>
+            <button class="star-btn" type="button" data-val="2" aria-label="2 stars">★</button>
+            <button class="star-btn" type="button" data-val="3" aria-label="3 stars">★</button>
+            <button class="star-btn" type="button" data-val="4" aria-label="4 stars">★</button>
+            <button class="star-btn" type="button" data-val="5" aria-label="5 stars">★</button>
+          </div>
+
+          <!-- What went well -->
+          <div class="form-group">
+            <label>What went well? <span style="font-size:0.78rem;color:var(--taupe);text-transform:none;letter-spacing:0;">(select all that apply)</span></label>
+            <div class="chip-group" id="chipGroup">
+              <button class="chip" type="button" data-val="Communication">Communication</button>
+              <button class="chip" type="button" data-val="Design quality">Design quality</button>
+              <button class="chip" type="button" data-val="Timeliness">Timeliness</button>
+              <button class="chip" type="button" data-val="Sourcing">Sourcing</button>
+              <button class="chip" type="button" data-val="Final reveal">Final reveal</button>
+              <button class="chip" type="button" data-val="Value for money">Value for money</button>
+            </div>
+          </div>
+
+          <hr class="fb-divider" />
+
+          <!-- Personal details -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fb-name">Your name <span style="color:var(--accent);">*</span></label>
+              <input type="text" id="fb-name" placeholder="Full name" required />
+            </div>
+            <div class="form-group">
+              <label for="fb-email">Your email <span style="color:var(--accent);">*</span></label>
+              <input type="email" id="fb-email" placeholder="your@email.com" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="fb-project">Project type</label>
+            <select id="fb-project">
+              <option value="">Select your project</option>
+              <option>Living Room</option>
+              <option>Bedroom</option>
+              <option>Kitchen &amp; Dining</option>
+              <option>Full Home</option>
+              <option>Virtual Consult</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="fb-subject">Subject <span style="color:var(--accent);">*</span></label>
+            <input type="text" id="fb-subject" placeholder="e.g. Amazing bedroom transformation!" required />
+          </div>
+
+          <div class="form-group">
+            <label for="fb-message">Your feedback <span style="color:var(--accent);">*</span></label>
+            <textarea id="fb-message" rows="5"
+              placeholder="Tell us about your experience — what you loved, what could be improved, and how your space makes you feel now…"
+              required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="fb-recommend">Would you recommend us?</label>
+            <select id="fb-recommend">
+              <option value="">Select an option</option>
+              <option>Absolutely — already have!</option>
+              <option>Yes, definitely</option>
+              <option>Probably</option>
+              <option>Not sure</option>
+              <option>No</option>
+            </select>
+          </div>
+
+          <div class="fb-submit-row">
+            <button class="btn btn-dark" id="sendBtn" type="button" onclick="sendFeedback()">
+              Send feedback ✉
+            </button>
+            <span class="privacy-note">Sent directly to our studio · Never shared with third parties</span>
+          </div>
+        </div><!-- /#fbForm -->
+
+      </div><!-- /.fb-card -->
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="fb-testimonials">
+    <div class="container">
+      <span class="section-tag">What clients say</span>
+      <h2>Voices from our community.</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p>"Working with Haven &amp; Home was the best decision we made for our new apartment.
+             The moodboard process was so clear and the final reveal was beyond what we imagined."</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=220&q=80"
+                 alt="Client portrait" />
+            <div>
+              <div class="author-name">Amara T.</div>
+              <div class="author-type">Living Room Refresh</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p>"Our bedroom went from cluttered to calm in two weeks. The sourcing was impeccable —
+             every piece felt intentional. I genuinely love coming home now."</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=220&q=80"
+                 alt="Client portrait" />
+            <div>
+              <div class="author-name">Daniel K.</div>
+              <div class="author-type">Bedroom Styling</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p>"From the first discovery call to the final styling pass, the process was smooth,
+             warm, and creative. Our dining space now feels like it belongs in a magazine."</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=220&q=80"
+                 alt="Client portrait" />
+            <div>
+              <div class="author-name">Lesego M.</div>
+              <div class="author-type">Dining Concept</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <section id="location" style="padding:3.5rem 0;">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-mark-lg">H</div>
+          <h3>Haven &amp; Home</h3>
+          <p>Modern interior design for calm, expressive homes. Thoughtful layouts, curated pieces,
+             and styling that makes everyday spaces feel elevated.</p>
+          <div class="footer-details">
+            <div class="footer-detail"><span>✉</span> hello@havenandhome.com</div>
+            <div class="footer-detail"><span>🕐</span> Mon – Sat | 9:00 – 18:00</div>
+            <div class="footer-detail"><span>✦</span> Designing homes with warmth and intention</div>
+          </div>
+        </div>
+        <div>
+          <span class="section-tag">Quick links</span>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.7rem;margin-top:0.8rem;">
+            <li><a href="index.html#about"   style="color:var(--mocha);font-size:0.9rem;">About Us</a></li>
+            <li><a href="index.html#design"  style="color:var(--mocha);font-size:0.9rem;">Featured Projects</a></li>
+            <li><a href="index.html#shop"    style="color:var(--mocha);font-size:0.9rem;">Curated Shop</a></li>
+            <li><a href="index.html#contact" style="color:var(--mocha);font-size:0.9rem;">Contact &amp; Consult</a></li>
+            <li><a href="feedback.html"      style="color:var(--espresso);font-size:0.9rem;font-weight:500;">Submit Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Haven &amp; Home Interior Design Studio. All rights reserved.</p>
+  </footer>
+
+  <script>
+    /* ── Star rating ── */
+    const stars = document.querySelectorAll('.star-btn');
+    let selectedRating = 0;
+
+    stars.forEach(btn => {
+      btn.addEventListener('mouseover', () => {
+        const val = +btn.dataset.val;
+        stars.forEach(s => s.classList.toggle('lit', +s.dataset.val <= val));
+      });
+      btn.addEventListener('mouseout', () => {
+        stars.forEach(s => s.classList.toggle('lit', +s.dataset.val <= selectedRating));
+      });
+      btn.addEventListener('click', () => {
+        selectedRating = +btn.dataset.val;
+        stars.forEach(s => s.classList.toggle('lit', +s.dataset.val <= selectedRating));
+      });
+    });
+
+    /* ── Chips ── */
+    document.querySelectorAll('.chip').forEach(chip => {
+      chip.addEventListener('click', () => chip.classList.toggle('active'));
+    });
+
+    /* ── Send feedback via mailto ── */
+    function sendFeedback() {
+      const name      = document.getElementById('fb-name').value.trim();
+      const email     = document.getElementById('fb-email').value.trim();
+      const subject   = document.getElementById('fb-subject').value.trim();
+      const message   = document.getElementById('fb-message').value.trim();
+      const project   = document.getElementById('fb-project').value;
+      const recommend = document.getElementById('fb-recommend').value;
+
+      /* Basic validation */
+      if (!name || !email || !subject || !message) {
+        const firstEmpty = [
+          !name    && document.getElementById('fb-name'),
+          !email   && document.getElementById('fb-email'),
+          !subject && document.getElementById('fb-subject'),
+          !message && document.getElementById('fb-message'),
+        ].find(Boolean);
+        if (firstEmpty) {
+          firstEmpty.style.borderColor = 'var(--accent)';
+          firstEmpty.focus();
+          firstEmpty.addEventListener('input', () => firstEmpty.style.borderColor = '', { once: true });
+        }
+        return;
+      }
+
+      /* Gather chips */
+      const highlights = [...document.querySelectorAll('.chip.active')]
+        .map(c => c.dataset.val).join(', ') || 'N/A';
+
+      const ratingText = selectedRating
+        ? `${'★'.repeat(selectedRating)}${'☆'.repeat(5 - selectedRating)} (${selectedRating}/5)`
+        : 'Not rated';
+
+      /* Build email body */
+      const body = [
+        `From: ${name} <${email}>`,
+        ``,
+        `⭐ Rating: ${ratingText}`,
+        `📋 Project type: ${project || 'N/A'}`,
+        `👍 Highlights: ${highlights}`,
+        `🔁 Would recommend: ${recommend || 'N/A'}`,
+        ``,
+        `─────────────────────────`,
+        `Message:`,
+        message,
+        `─────────────────────────`,
+        `Sent via Haven & Home Feedback Form`,
+      ].join('\n');
+
+      const recipient = 'bida25-184@thuto.bac.ac.bw';
+      const mailSubject = encodeURIComponent(`[H&H Feedback] ${subject}`);
+      const mailBody    = encodeURIComponent(body);
+
+      /* Open mail client */
+      window.location.href = `mailto:${recipient}?subject=${mailSubject}&body=${mailBody}`;
+
+      /* Show success state after a short delay */
+      setTimeout(() => {
+        document.getElementById('fbForm').style.display = 'none';
+        document.getElementById('successMsg').classList.add('show');
+        window.scrollTo({ top: document.querySelector('.fb-card').offsetTop - 120, behavior: 'smooth' });
+      }, 800);
+    }
+  </script>
+
+</body>
+</html>
